@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { ArrowRight, Download } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTiktok } from "react-icons/fa6";
 export const Hero = () => {
   return (
     <section className="relative min-h-screen items-center overflow-hidden">
@@ -43,37 +44,59 @@ export const Hero = () => {
                 FullStack Developpeur • MERN STACK Specialist
               </span>
             </div>
+            {/* Headline */}
+            <div className="space-y-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight animate-fade-in animation-delay-100">
+                Je construis des applications <br />
+                <span className="text-primary glow-text">
+                  web modernes,
+                </span>{" "}
+                <br />
+                <span className="font-serif italic font-normal text-white">
+                  rapides et sécurisées.
+                </span>
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
+                Bonjour, je suis Lassana BARADJI — développeur web Full Stack
+                spécialisé en React, Node.js, Express et MongoDB. Passionné par
+                le développement d'applications web modernes, je crée des
+                solutions robustes, maintenables et évolutives, capables de
+                répondre aux besoins réels des entreprises et de leurs
+                utilisateurs.
+              </p>
+            </div>
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300 py-5">
+              <Button>
+                Me Contacter <ArrowRight className="w-5 h-5" />
+              </Button>
+
+              <AnimatedBorderButton>
+                <Download className="w-5 h-5" />
+                Télécharger mon CV
+              </AnimatedBorderButton>
+            </div>
+            {/* Social Links */}
+            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
+              <span className="text-sm text-muted-foreground">
+                Suivez-moi:{" "}
+              </span>
+              {[
+                { icon: FaGithub, href: "#" },
+                { icon: FaLinkedin, href: "#" },
+                { icon: FaTiktok, href: "#" },
+              ].map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.href}
+                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                >
+                  {<social.icon className="w-5 h-5" />}
+                </a>
+              ))}
+            </div>
           </div>
           {/* Right Column - Profile Image */}
-        </div>
-        {/* Headline */}
-        <div className="space-y-4">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight animate-fade-in animation-delay-100">
-            Je construis des applications <br />
-            <span className="text-primary glow-text">web modernes,</span> <br />
-            <span className="font-serif italic font-normal text-white">
-              rapides et sécurisées.
-            </span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-            Bonjour, je suis Lassana BARADJI — développeur web Full Stack
-            spécialisé en React, Node.js, Express et MongoDB. Passionné par le
-            développement d'applications web modernes, je crée des solutions
-            robustes, maintenables et évolutives, capables de répondre aux
-            besoins réels des entreprises et de leurs utilisateurs.
-          </p>
-        </div>
-
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-          <Button>
-            Me Contacter <ArrowRight className="w-5 h-5" />
-          </Button>
-
-          <AnimatedBorderButton>
-            <Download className="w-5 h-5" />
-            Télécharger mon CV
-          </AnimatedBorderButton>
         </div>
       </div>
     </section>
