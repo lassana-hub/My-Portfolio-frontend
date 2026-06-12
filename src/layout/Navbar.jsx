@@ -1,8 +1,8 @@
 import { Button } from "@/components/Button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-
 import { FaGithub, FaLinkedin, FaTiktok } from "react-icons/fa6";
+
 const navLinks = [
   { href: "#about", label: "À propos" },
   { href: "#projects", label: "Projets" },

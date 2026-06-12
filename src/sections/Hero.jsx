@@ -1,7 +1,48 @@
 import { Button } from "@/components/Button";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, ChevronDown } from "lucide-react";
+import {
+  SiReact,
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiTypescript,
+  SiNodedotjs,
+  SiExpress,
+  SiTailwindcss,
+  SiMongodb,
+  SiPrisma,
+  SiPostman,
+  SiGraphql,
+  SiPostgresql,
+  SiRedis,
+  SiDocker,
+  SiVercel,
+  SiFigma,
+  SiGit,
+} from "react-icons/si";
+
 export const Hero = () => {
+  const skills = [
+    { id: 1, name: "Html5", icon: SiHtml5 },
+    { id: 2, name: "Css", icon: SiCss },
+    { id: 3, name: "Tailwindcss", icon: SiTailwindcss },
+    { id: 4, name: "Javascript", icon: SiJavascript },
+    { id: 5, name: "React", icon: SiReact },
+    { id: 6, name: "Typescript", icon: SiTypescript },
+    { id: 7, name: "Node.js", icon: SiNodedotjs },
+    { id: 8, name: "Express", icon: SiExpress },
+    { id: 9, name: "MongoDB", icon: SiMongodb },
+    { id: 10, name: "Git", icon: SiGit },
+    { id: 11, name: "Vercel", icon: SiVercel },
+    { id: 12, name: "Docker", icon: SiDocker },
+    { id: 13, name: "Figma", icon: SiFigma },
+    { id: 14, name: "Redis", icon: SiRedis },
+    { id: 15, name: "Postgresql", icon: SiPostgresql },
+    { id: 16, name: "Graphql", icon: SiGraphql },
+    { id: 17, name: "Postman", icon: SiPostman },
+    { id: 18, name: "Prisma", icon: SiPrisma },
+  ];
   return (
     <section className="relative min-h-screen items-center overflow-hidden">
       {/* Background */}
@@ -111,6 +152,50 @@ export const Hero = () => {
             </div>
           </div>
         </div>
+        {/* Skills section */}
+        <div className="mt-20 animate-fade-in animation-delay-600">
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Technologies maîtrisées
+          </p>
+          <div className="relative overflow-hidden">
+            <div
+              className="absolute left-0 top-0 bottom-0 w-32
+             bg-linear-to-r from-background to-transparent z-10"
+            />
+            <div
+              className="absolute right-0 top-0 bottom-0 w-32
+             bg-linear-to-l from-background to-transparent z-10"
+            />
+            <div className="flex animate-marquee">
+              <div className="flex gap-6 text-6xl">
+                {skills.map((skill) => {
+                  const Icon = skill.icon;
+                  return (
+                    <div key={skill.id} className="shrink-0 px-8 py-4">
+                      <div className="flex flex-col items-center font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                        <Icon />
+                        <span className="text-sm">{skill.name}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 
+      animate-fade-in animation-delay-800"
+      >
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+        >
+          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <ChevronDown className="w-6 h-6 animate-bounce" />
+        </a>
       </div>
     </section>
   );
