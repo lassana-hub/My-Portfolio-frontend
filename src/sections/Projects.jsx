@@ -35,7 +35,7 @@ const projects = [
       "A collaborative workspace for teams with real-time updates, task tracking, and integrations.",
     image: "/projects/project4.png",
     tags: ["Next.js", "Socket.io", "MongoDB", "Redis"],
-    link: "#",
+    link: "https://www.google.com/",
     github: "#",
   },
 ];
@@ -69,17 +69,40 @@ export const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((projects, idx) => (
+          {projects.map((project, idx) => (
             <div
               key={idx}
               className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}
             >
-              <img
-                src={projects.image}
-                alt={projects.title}
-                className="w-full h-full object-cover transition-transform duration-700"
-              />
+              {/* Image */}
+              <div className="relative overflow-hidden aspect-video">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div
+                  className="absolute inset-0 
+                bg-linear-to-t from-card via-card/50
+                 to-transparent opacity-60"
+                />
+                {/* Overlay Links */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <a
+                    href={project.link}
+                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                  >
+                    <ArrowUpRight className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={project.FaGithub}
+                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                  >
+                    <FaGithub className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
             </div>
           ))}
         </div>
