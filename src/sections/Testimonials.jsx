@@ -1,3 +1,154 @@
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useState } from "react";
+
+const testimonials = [
+  {
+    quote:
+      "Lassana est l'un des développeurs les plus talentueux avec lesquels j'ai eu l'occasion de travailler. Son souci du détail et sa capacité à transformer des besoins complexes en solutions élégantes sont remarquables.",
+    author: "Sarah Chen",
+    role: "CTO, Tech Innovators Inc.",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+  },
+  {
+    quote:
+      "Travailler avec Lassana a été un véritable atout pour notre projet. Il a livré le travail avant les délais avec une qualité de code qui a établi un nouveau standard pour notre équipe.",
+    author: "Michael Rodriguez",
+    role: "Chef de produit, Digital Solutions",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+  },
+  {
+    quote:
+      "L'expertise de Lassana en React et TypeScript nous a permis de reconstruire entièrement notre interface utilisateur en un temps record. Ses choix d'architecture continuent de porter leurs fruits.",
+    author: "Emily Watson",
+    role: "Responsable technique, StartUp Labs",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+  },
+  {
+    quote:
+      "En plus de ses excellentes compétences techniques, Lassana est un très bon communicant et un excellent coéquipier. Il a contribué à faire progresser toute l'équipe.",
+    author: "David Kim",
+    role: "PDG, Innovation Hub",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+  },
+];
+
 export const Testimonials = () => {
-  return <section></section>;
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const next = () => {
+    setActiveIdx((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const previous = () => {
+    setActiveIdx(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
+  };
+
+  return (
+    <section id="testimonials" className="py-32 relative overflow-hidden">
+      <div
+        className="absolute top-1/2 left-1/2
+       w-[800px] h-[800px] bg-primary/5
+        rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        className="container mx-auto 
+      px-6 relative z-10"
+      >
+        {/* Section Header */}
+        <div
+          className="text-center max-w-3xl 
+        mx-auto mb-16"
+        >
+          <span
+            className="text-secondary-foreground 
+          text-sm font-medium tracking-wider 
+          uppercase animate-fade-in"
+          >
+            Avis et témoignages
+          </span>
+          <h2
+            className="text-4xl md:text-5xl 
+          font-bold mt-4 mb-6 animate-fade-in 
+          animation-delay-100 text-secondary-foreground"
+          >
+            Quelques mots bienveillants{" "}
+            <span
+              className="font-serif italic 
+            font-normal text-white"
+            >
+              de personnes avec qui j'ai eu le plaisir de collaborer.
+            </span>
+          </h2>
+        </div>
+
+        {/* Testimonial Carousel */}
+        <div className="max-w-4xl mx-auto">
+          <div className="relative">
+            {/* Main Testimonial */}
+            <div className="glass p-8 rounded-3xl md:p-12 glow-border animate-fade-in animation-delay-200">
+              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                <Quote className="w-6 h-6 text-primary-foreground" />
+              </div>
+
+              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8 pt-4">
+                "{testimonials[activeIdx].quote}"
+              </blockquote>
+
+              <div className="flex items-center gap-4">
+                <img
+                  src={testimonials[activeIdx].avatar}
+                  alt={testimonials[activeIdx].author}
+                  className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
+                />
+                <div>
+                  <div className="font-semibold">
+                    {testimonials[activeIdx].author}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonials[activeIdx].role}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonials Navigation */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+                onClick={previous}
+              >
+                <ChevronLeft />
+              </button>
+
+              <div className="flex gap-2">
+                {testimonials.map((_, idx) => (
+                  <button
+                    onClick={() => setActiveIdx(idx)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      idx === activeIdx
+                        ? "w-8 bg-primary"
+                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={next}
+                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+              >
+                <ChevronRight />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
